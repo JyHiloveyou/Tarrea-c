@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link rel="stylesheet" href="CSS/main.css">
+   
+</head>
+<body>
+    <div class="music-player">
+        <img src="IMG/lee-hi-comeback-2021.jpeg" alt="" class="album-cover" id="albumCover">
+        <div class="controls">
+            <button id="playPauseBtn" onclick="togglePlayPause()">💜</button>
+        </div>
+        
+        <audio id="audio" src="AUDIO/Y2meta.app-Only - Lee Hi (Letra en español)-(128kbps).ogg"></audio>
+    </div>
+
+    <script src="JS/js.js"></script>
+</body>
+</html>
+
+
+
+
+
+CSS:
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #9c3382, #020101);
+}
+
+.music-player {
+    text-align: center;
+}
+
+.album-cover {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    box-shadow: 19px 14px 25px rgb(240, 169, 216);
+    margin-bottom: 20px;
+    border: 10px solid;
+}  
+
+.controls button {
+    font-size: 40px;
+}
+
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+JS: 
+
+var audio = document.getElementById('audio');
+var playPauseBtn = document.getElementById('playPauseBtn');
+var progressBar = document.getElementById('progressBar');
+var currentTimeElement = document.getElementById('currentTime');
+var totalTimeElement = document.getElementById('totalTime');
+var albumCover = document.getElementById('albumCover');
+
+function togglePlayPause() {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '💜';
+        albumCover.style.animation = 'rotation 5s infinite linear';
+    } else {
+        audio.pause();
+        playPauseBtn.textContent = '💜';
+        albumCover.style.animation = 'none';
+    }
+}
